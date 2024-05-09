@@ -1,0 +1,23 @@
+syntax="proto3";
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/thatmounaim/dzforex.microservice/proto";
+
+service DzForex {
+	rpc GetRate(RateRequest) returns(RateResponse);
+	rpc GetAvailableCurrencies(google.protobuf.Empty) returns(AvailableCurrenciesResponse);
+}
+
+message RateRequest {
+	string Currency = 1;
+}
+
+message RateResponse {
+	float Buy = 1;
+	float Sell = 2;
+}
+
+message AvailableCurrenciesResponse {
+	repeated string Currencies = 1;
+}
